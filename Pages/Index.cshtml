@@ -1,0 +1,56 @@
+﻿@page
+@using System.Web.Helpers
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+   
+}
+
+<div class="text-center">
+    <h1 class="display-4">API Tester</h1>
+</div>
+<div class="container align-content-center">
+    <div class="input-group-text bg-dark">    
+        <form asp-page-handler="button" method="post">
+            <button name="getall" class="btn btn-primary">Get All</button>
+            <button name="getone" class="btn btn-primary">Get One</button>
+            <button name="clear" class="btn btn-primary">Clear</button>
+            <p></p>
+            <select class="form-control" name="idreq">
+                @for (var i = 0; i < 256; i++)
+                {
+                    <option>@i</option>
+                }
+            </select>
+
+        </form>
+    </div>
+
+    
+    <p></p>
+    
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-bordered table-hover" id="messages" style='max-height: 300px; scroll-margin: 10px' align='center' border='2'>
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+       
+            @foreach (var x in Model.messages)
+            {
+                <tr>
+                    <td>@x.User</td>
+                    <td>@x.Text</td>
+                </tr>
+
+                
+            }
+        </table>
+    </div>
+    
+</div>
+
+
+
